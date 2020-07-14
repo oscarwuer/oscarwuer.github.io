@@ -14,8 +14,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="什么是Universal Links?Universal Links是iOS9推出的一项功能，使你的应用可以通过http或者https协议来启动。如果是已经安装了app，则直接打开，如果没有安装，则打开网页（网页的内容一般是公司主页）。 其实在iOS9之前，从外部唤醒app的方式有scheme。但是这种方式需要提前判断系统中是否安装了能够响应此scheme的app，而且这种方式在微信中是禁止的。">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1335883-11d74ae6ccdd7c28.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1608265-6e3f53186f74a1fd.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1335883-f65957d552345f33.png">
+<meta property="og:image" content="http://yoursite.com/Users/cg/Downloads/1335883-11d74ae6ccdd7c28.png">
+<meta property="og:image" content="http://yoursite.com/Users/cg/Downloads/1335883-11d74ae6ccdd7c28.png">
 <meta property="article:published_time" content="2020-07-14T06:18:36.000Z">
-<meta property="article:modified_time" content="2020-07-14T06:22:43.419Z">
+<meta property="article:modified_time" content="2020-07-14T07:09:14.306Z">
 <meta property="article:tag" content="iOS technology">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1335883-11d74ae6ccdd7c28.png">
@@ -89,13 +93,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="什么是Universal-Links"><a href="#什么是Universal-Links" class="headerlink" title="什么是Universal Links?"></a>什么是Universal Links?</h4><p>Universal Links是iOS9推出的一项功能，使你的应用可以通过http或者https协议来启动。如果是已经安装了app，则直接打开，如果没有安装，则打开网页（网页的内容一般是公司主页）。</p>
-<p>其实在iOS9之前，从外部唤醒app的方式有scheme。但是这种方式需要提前判断系统中是否安装了能够响应此scheme的app，而且这种方式在微信中是禁止的。</p>
+        <h4 id="什么是Universal-Links"><a href="#什么是Universal-Links" class="headerlink" title="什么是Universal Links?"></a>什么是Universal Links?</h4><p><strong>Universal Links</strong>是iOS9推出的一项功能，使你的应用可以通过http或者https协议来启动。如果是已经安装了app，则直接打开，如果没有安装，则打开网页（网页的内容一般是公司主页）。</p>
+<p>其实在iOS9之前，从外部唤醒app的方式有<strong>scheme</strong>。但是这种方式需要提前判断系统中是否安装了能够响应此scheme的app，而且这种方式在微信中是禁止的。</p>
 <h4 id="如何使用Universal-Links？"><a href="#如何使用Universal-Links？" class="headerlink" title="如何使用Universal Links？"></a>如何使用Universal Links？</h4><ol>
 <li>首先得准备一个域名，要求这个域名支持https协议</li>
 <li>需要在开发者中心做配置：找到对应的App ID，在Application Services列表里有Associated Domains一条，把它变为Enabled就可以了。</li>
 </ol>
 <p><img src="https://upload-images.jianshu.io/upload_images/1335883-11d74ae6ccdd7c28.png" alt=""></p>
+<ol start="3">
+<li>Xcode配置：将Associated Domains打开（注意xcode10.0以下是图一所示，xcode10.0以上需要手动添加，如图二所示）。同时填写我们的域名，<strong>必须以applinks:为前缀</strong>，比如你的域名为<em>test.com</em>，那么填写的就是<em>applinks:test.com</em>。app会在第一次启动的时候通过填写的域名来下载pple-app-site-association文件。</li>
+</ol>
+<p>图一：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1608265-6e3f53186f74a1fd.png" alt="图一"></p>
+<p>图二：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1335883-f65957d552345f33.png" alt="图二"></p>
+<ol start="4">
+<li>创建apple-app-site-association文件（服务端工作），格式如下</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"applinks"</span>: &#123;</span><br><span class="line">        <span class="attr">"apps"</span>: [],</span><br><span class="line">        <span class="attr">"details"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"appID"</span>: <span class="string">"TEAMIDSHSAUX.com.test.bundle"</span>,</span><br><span class="line">                <span class="attr">"paths"</span>: [ <span class="string">"*"</span> ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="相关参数说明"><a href="#相关参数说明" class="headerlink" title="相关参数说明"></a>相关参数说明</h6><ul>
+<li>appID：由TeamID.BundleID组成。TeamID可在开发者中心查看，BundleID可在Xcode中查看。</li>
+<li>paths：设定一个App的路径支持列表，只有这些指定的路径链接才会被App所处理。（paths是大小写敏感，*是通配符表示任意路径，一般填写这个就可以）</li>
+</ul>
+<p>dfasdfasdf</p>
+<p><img src="/Users/cg/Downloads/1335883-11d74ae6ccdd7c28.png" alt="等级考试费"></p>
+<p><img src="/Users/cg/Downloads/1335883-11d74ae6ccdd7c28.png" alt="sdfa"></p>
 
       
     </div>
