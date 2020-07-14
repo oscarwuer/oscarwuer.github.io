@@ -3,7 +3,7 @@
   <title>Hexo</title>
   
   
-  <link href="//atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
   <updated>2020-07-14T08:54:53.268Z</updated>
