@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Universal Links | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是Universal Links?Universal Links是iOS9推出的一项功能，使你的应用可以通过http或者https协议来启动。如果是已经安装了app，则直接打开，如果没有安装，则打开网页（网页的内容一般是公司主页）。 其实在iOS9之前，从外部唤醒app的方式有scheme。但是这种方式需要提前判断系统中是否安装了能够响应此scheme的app，而且这种方式在微信中是禁止的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Universal Links">
+<meta property="og:url" content="http://yoursite.com/2020/07/14/Links/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是Universal Links?Universal Links是iOS9推出的一项功能，使你的应用可以通过http或者https协议来启动。如果是已经安装了app，则直接打开，如果没有安装，则打开网页（网页的内容一般是公司主页）。 其实在iOS9之前，从外部唤醒app的方式有scheme。但是这种方式需要提前判断系统中是否安装了能够响应此scheme的app，而且这种方式在微信中是禁止的。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1335883-11d74ae6ccdd7c28.png">
+<meta property="article:published_time" content="2020-07-14T06:18:36.000Z">
+<meta property="article:modified_time" content="2020-07-14T06:22:43.419Z">
+<meta property="article:tag" content="iOS technology">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1335883-11d74ae6ccdd7c28.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Links" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/14/Links/" class="article-date">
+  <time datetime="2020-07-14T06:18:36.000Z" itemprop="datePublished">2020-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Universal Links
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是Universal-Links"><a href="#什么是Universal-Links" class="headerlink" title="什么是Universal Links?"></a>什么是Universal Links?</h4><p>Universal Links是iOS9推出的一项功能，使你的应用可以通过http或者https协议来启动。如果是已经安装了app，则直接打开，如果没有安装，则打开网页（网页的内容一般是公司主页）。</p>
+<p>其实在iOS9之前，从外部唤醒app的方式有scheme。但是这种方式需要提前判断系统中是否安装了能够响应此scheme的app，而且这种方式在微信中是禁止的。</p>
+<h4 id="如何使用Universal-Links？"><a href="#如何使用Universal-Links？" class="headerlink" title="如何使用Universal Links？"></a>如何使用Universal Links？</h4><ol>
+<li>首先得准备一个域名，要求这个域名支持https协议</li>
+<li>需要在开发者中心做配置：找到对应的App ID，在Application Services列表里有Associated Domains一条，把它变为Enabled就可以了。</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/1335883-11d74ae6ccdd7c28.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/14/Links/" data-id="ckcljscwz0000q9klcasc48hd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS-technology/" rel="tag">iOS technology</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS-technology/" rel="tag">iOS technology</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/iOS-technology/" style="font-size: 10px;">iOS technology</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/14/Links/">Universal Links</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/14/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hexo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
