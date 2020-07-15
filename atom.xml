@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>长弓雪舞</title>
   
-  
+  <subtitle>一叶风雪，一落火舞</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
   <updated>2020-07-15T08:50:53.604Z</updated>
   <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>长弓</name>
+    
+  </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
