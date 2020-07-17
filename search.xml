@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Universal Links</title>
+    <url>/2020/07/14/universal_links/</url>
+    <content><![CDATA[<h4 id="什么是Universal-Links"><a href="#什么是Universal-Links" class="headerlink" title="什么是Universal Links?"></a>什么是Universal Links?</h4><p><strong>Universal Links</strong>是iOS9推出的一项功能，使你的应用可以通过http或者https协议来启动。如果是已经安装了app，则直接打开，如果没有安装，则打开网页（网页的内容一般是公司主页）。</p>
+<p>其实在iOS9之前，从外部唤醒app的方式有<strong>scheme</strong>。但是这种方式需要提前判断系统中是否安装了能够响应此scheme的app，而且这种方式在微信中是禁止的。</p>
+<h4 id="Universal-Links-特性"><a href="#Universal-Links-特性" class="headerlink" title="Universal Links 特性"></a>Universal Links 特性</h4><ul>
+<li><strong>唯一性</strong>：不像自定义的<strong>scheme</strong>，<strong>Universal Links</strong>不会被其它的app所使用。（你的域名总归不会被其它公司使用吧）</li>
+<li><strong>安全性</strong>：当用户第一次打开app的时候，iOS会检查apple-app-site-association文件以确保你的网站允许app以其名义打开网址，这个文件的上传是有权限控制的，所以网站和app的关联是安全的。</li>
+<li><strong>灵活性</strong>：当手机中没有安装app的时候，当你点开链接时，也会在safari中打开网页来展示你网站的内容。</li>
+<li><strong>安全&amp;灵活</strong>：避免别的app检测你是否安装。</li>
+</ul>
+<h4 id="如何使用Universal-Links？"><a href="#如何使用Universal-Links？" class="headerlink" title="如何使用Universal Links？"></a>如何使用Universal Links？</h4><ol>
+<li>首先得准备一个域名，要求这个域名支持https协议</li>
+<li>需要在开发者中心做配置：找到对应的App ID，在Application Services列表里有Associated Domains一条，把它变为Enabled就可以了。</li>
+</ol>
+<img src="https://s1.ax1x.com/2020/07/15/UwZO6x.png" style="zoom:50%;">
+
+<ol start="3">
+<li>Xcode配置：将Associated Domains打开（注意xcode10.0以下是图一所示，xcode10.0以上需要手动添加，如图二所示）。同时填写我们的域名，<strong>必须以applinks:为前缀</strong>，比如你的域名为<em>test.com</em>，那么填写的就是<em>applinks:test.com</em>。app会在第一次启动的时候通过填写的域名来下载apple-app-site-association文件。</li>
+</ol>
+<p>图一：</p>
+<img src="https://s1.ax1x.com/2020/07/15/UwZXX6.png" alt="图一" style="zoom:67%;">
+
+<p>图二：</p>
+<img src="https://s1.ax1x.com/2020/07/15/UwZL11.png" alt="图二" style="zoom:67%;">
+
+
+
+<ol start="4">
+<li>创建apple-app-site-association文件（服务端工作），格式如下</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"applinks"</span>: &#123;</span><br><span class="line">        <span class="attr">"apps"</span>: [],</span><br><span class="line">        <span class="attr">"details"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"appID"</span>: <span class="string">"TEAMIDSHSAUX.com.test.bundle"</span>,</span><br><span class="line">                <span class="attr">"paths"</span>: [ <span class="string">"*"</span> ]</span><br><span class="line">            &#125;,</span><br><span class="line">          	&#123;</span><br><span class="line">                <span class="attr">"appID"</span>: <span class="string">"TEAMIDSHSAUXANOTHER.com.test.bundle"</span>,</span><br><span class="line">                <span class="attr">"paths"</span>: [ <span class="string">"*"</span> ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="相关参数说明"><a href="#相关参数说明" class="headerlink" title="相关参数说明"></a>相关参数说明</h6><ul>
+<li>appID：由<strong>TeamID.BundleID</strong>组成。TeamID可在开发者中心查看，BundleID可在Xcode中查看。</li>
+<li>paths：设定一个App的路径支持列表，只有这些指定的路径链接才会被App所处理。（paths是大小写敏感，*是通配符表示任意路径，一般填写这个就可以）</li>
+</ul>
+<ol start="5">
+<li>上传文件到域名所对应的根目录，这是为了苹果能获取到你上传的这个文件。（服务端工作）</li>
+</ol>
+<h4 id="Universal-Links验证"><a href="#Universal-Links验证" class="headerlink" title="Universal Links验证"></a>Universal Links验证</h4><p>一般通常在<strong>备忘录</strong>中输入一个链接，一般类似</p>
+<p><code>https://你的域名/填写的paths</code></p>
+<p>如果paths中填写的是通配符 * ，那paths就不用带上。</p>
+<p>点击此链接，就会直接跳转到对应的app，这就算成功了。</p>
+<img src="https://s1.ax1x.com/2020/07/15/UwebVS.png" alt="备忘录中" style="zoom:50%;">
+
+<p>或者你将要测试的链接放在safari中打开，在出现的网页上下滑，可以看到有<strong>在xx应用中打开</strong>：</p>
+<img src="https://s1.ax1x.com/2020/07/15/UweqUg.png" alt="safari中" style="zoom:50%;">
+
+<p>在微信的网页浏览器里也是可以的。虽然微信屏蔽了所有的<strong>scheme</strong>方式跳转到其它app，但是Universal Links是由系统直接处理的，这也就实现了从微信跳转到我们的app。</p>
+<h4 id="进入app的处理"><a href="#进入app的处理" class="headerlink" title="进入app的处理"></a>进入app的处理</h4><p>当用户点击某个链接，直接进入到我们的app，会触发下面的api。在这儿我们可以处理相关的逻辑，比如你们的app支持router跳转，根据传过来的参数，就可以跳转到具体的页面。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray&lt;id&lt;UIUserActivityRestoring&gt;&gt; * _Nullable))restorationHandler &#123;</span><br><span class="line">    NSURLComponents *comps &#x3D; [[NSURLComponents alloc] initWithString:userActivity.webpageURL.absoluteString];</span><br><span class="line">    if ([comps.host isEqualToString:@&quot;你们的域名&quot;]) &#123;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; universal links 处理</span><br><span class="line">        for (NSURLQueryItem *item in comps.queryItems) &#123;</span><br><span class="line">            if ([item.name isEqualToString:@&quot;url&quot;]) &#123;</span><br><span class="line">                self.linksRouteUrlString &#x3D; item.value;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (self.isUniverlinksFromLanch) &#123;</span><br><span class="line">            &#x2F;&#x2F;&#x2F; 避免冷启动执行两次 handleURL</span><br><span class="line">            self.isUniverlinksFromLanch &#x3D; NO;</span><br><span class="line">            self.isNeedHandleUniversalLinks &#x3D; YES;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            &#x2F;&#x2F; 热启动</span><br><span class="line">            [self p_handleUniversalLinks:nil];</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意这儿的逻辑：</p>
+<ol>
+<li>建议使用 <strong>NSURLComponents</strong> 类去处理url逻辑。</li>
+<li>这儿的query中value中的值，建议<strong>encode</strong>，否则解析出来的可能出错。</li>
+<li>这个回调的处理建议是热启动，如果是冷启动，建议放到<code>homeVC</code>的<code>viewDidAppear:</code>函数中，这儿的考虑是时机加载问题，所以冷启动的情况下，只是处理标记位。</li>
+<li>既然区分了冷热启动，最好就把冷启动这个方法的实现屏蔽掉，避免执行两遍。</li>
+</ol>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li><strong>必须要求跨域</strong>：即你当前webView的url域名,与你跳转的app域名不一致时,才生效。</li>
+<li>当我们的app在手机上第一次运行时，如果会支持<code>Associated Domains</code>功能，那么iOS会自动GET定义的Domain下的<code>apple-app-site-association</code>文件</li>
+<li>iOS会先请求<code>https://domain.com/.well-known/apple-app-site-association</code>，如果请求不到，再去请求<code>https://domain.com/apple-app-site-association</code>，所以如果想要避免服务器接收过多GET请求，可以直接把<code>apple-app-site-association</code>文件放在<code>./well-know</code>目录下</li>
+<li>服务器上的<code>apple-app-site-association</code>文件更新不会让iOS本地的<code>apple-app-site-association</code>文件同步更新，即iOS只会在app第一次启动时请求一次，以后除非app更新或者重新安装，否则不会在每次打开时去请求<code>apple-app-site-association</code>文件</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>iOS technology</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Snippet</title>
+    <url>/2015/10/26/Snippet/</url>
+    <content><![CDATA[<p>Xcode在编码的时候，系统代码块给我们提供了很大的便利。然而，有时候，也给我们带来很大的困扰。</p>
+<p>例如，系统的 if 代码块，大括号是紧跟括号之后的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (condition) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是现在呢，公司的代码规范是要求另起一行。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (condition)</span><br><span class="line">&#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那每次都得手动去调，的确是件很影响心情的事。</p>
+<p>现在，就教大家怎么去修改系统的代码块样式。</p>
+<h4 id="xcode内置代码模板"><a href="#xcode内置代码模板" class="headerlink" title="xcode内置代码模板"></a>xcode内置代码模板</h4><p>Xcode的所有代码模板是用一个plist格式xml文件描述的，这文件存储在Xcode的安装目录：<br><code>/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/SystemCodeSnippets.codesnippets</code></p>
+<blockquote>
+<p>注意：Xcode5.1之前是在这个目录下<br>/Applications/Xcode.app/Contents/PlugIns/IDECodeSnippetLibrary.ideplugin/Contents/Resources/¬<br>SystemCodeSnippets.codesnippets</p>
+</blockquote>
+<p>用任意文本编辑打开这个文件，如下显示：</p>
+<p><img src="http://img.blog.csdn.net/20151026142350298" alt></p>
+<p>这个文件是没有权限去修改的。在这里就是所有的Xcode代码块的配置，包括常见的 if , if else , switch，dispatch等相关代码块。</p>
+<p>每一个 key 所对应的意义也很好理解。下面教你如何去理解。在此之前，你应该知道Xcode左下角有个花括号的页签，这里面存储了很多代码提示模板，就是以上所配置的。</p>
+<p><img src="http://img.blog.csdn.net/20151026143028995" alt="这里写图片描述"></p>
+<p>如果是自己拖拽进去的会有 User 标志。</p>
+<p><img src="http://img.blog.csdn.net/20151026143656268" alt="这里写图片描述"></p>
+<h4 id="自定义代码模块"><a href="#自定义代码模块" class="headerlink" title="自定义代码模块"></a>自定义代码模块</h4><blockquote>
+<p>关于拖拽进代码块的操作这里不作叙述，有不会的可以上网查查或者留言回复我再告之。</p>
+</blockquote>
+<p>自己定义的代码块是在以下目录下：<br><code>~/Library/Developer/Xcode/UserData/CodeSnippets/</code></p>
+<blockquote>
+<p>注意：只有自己定义过代码块，才会在UserData目录下存在CodeSnippets文件夹，否则是不存在的。</p>
+</blockquote>
+<p>你可以试试写个</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">randomColor(&#96;self.view.backgroundColor &#x3D; [UIColorcolorWithRed:arc4random()%255&#x2F;256.0f green:arc4random()%255&#x2F;256.0f blue:arc4random()%255&#x2F;256.0f alpha:1.0f])</span><br></pre></td></tr></table></figure>
+
+<p>的代码块，拖进去，你会发现在CodeSnippets文件夹下多了这么一个文件。</p>
+<p><img src="http://img.blog.csdn.net/20151026145134013" alt></p>
+<p>这儿的名字是可以更改的，后缀要写成.codesnippet 。</p>
+<p>所以我把它更改成如下名字，便于分辨。</p>
+<p><img src="http://img.blog.csdn.net/20151026145437453" alt></p>
+<p>用任意文本编辑器打开，和Xcode左下角对比，很容易明白各个key所对应的意思。</p>
+<p><img src="http://img.blog.csdn.net/20151026150041777" alt>    <img src="http://img.blog.csdn.net/20151026150100108" alt></p>
+<p>这里要注意的是以下几个 key 。<br><strong>IDECodeSnippetIdentifier</strong> 是唯一标识符，其中 if 模板的唯一标记是D70E6D11-0297-4BAB-88AA-86D5D5CBBC5D，不能重名，重名即会覆盖。</p>
+<p>这也是我们更改系统代码块样式的核心思想！！！</p>
+<p><strong>IDECodeSnippetVersion</strong> 是版本号，一般系统的都是1，我们自己定义的写成2。保持默认1也没多大问题，只是Xcode有时会自动用标识符替换你的自定义命名，所以用2是比较合适的。</p>
+<p>剩下的很重要的一步，如果是自定义的，一定要加以下这个 key， <strong>IDECodeSnippetUserSnippet</strong> ，定义为 true 。如果是自定义的而没有这个字段，Xcode是会崩溃的。</p>
+<p><img src="http://img.blog.csdn.net/20151026151504459" alt></p>
+<p>现在用 if 代码块对比一下系统的和自定义的区别。</p>
+<p>系统的是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dict&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetVersion&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;integer&gt;1&lt;&#x2F;integer&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetCompletionPrefix&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;if&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetContents&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;if (&lt;#condition#&gt;) &#123;</span><br><span class="line">    &lt;#statements#&gt;</span><br><span class="line">&#125;&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetIdentifier&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;D70E6D11-0297-4BAB-88AA-86D5D5CBBC5D&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetLanguage&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;Xcode.SourceCodeLanguage.C&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetSummary&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;Execute code only when a certain condition is true.&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetTitle&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;If Statement&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetCompletionScopes&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;array&gt;</span><br><span class="line">			&lt;string&gt;CodeBlock&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;&#x2F;array&gt;</span><br><span class="line">	&lt;&#x2F;dict&gt;</span><br></pre></td></tr></table></figure>
+
+<p>自定义的是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dict&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetVersion&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;integer&gt;2&lt;&#x2F;integer&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetUserSnippet&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;true&#x2F;&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetCompletionPrefix&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;if&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetContents&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;if (&lt;#condition#&gt;) </span><br><span class="line">&#123;</span><br><span class="line">    &lt;#statements#&gt;</span><br><span class="line">&#125;&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetIdentifier&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;D70E6D11-0297-4BAB-88AA-86D5D5CBBC5D&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetLanguage&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;Xcode.SourceCodeLanguage.C&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetSummary&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;Execute code only when a certain condition is true.&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetTitle&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;string&gt;If Statement&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;key&gt;IDECodeSnippetCompletionScopes&lt;&#x2F;key&gt;</span><br><span class="line">		&lt;array&gt;</span><br><span class="line">			&lt;string&gt;CodeBlock&lt;&#x2F;string&gt;</span><br><span class="line">		&lt;&#x2F;array&gt;</span><br><span class="line">	&lt;&#x2F;dict&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="看到这儿，到底如何去修改系统的代码块样式呢？？？"><a href="#看到这儿，到底如何去修改系统的代码块样式呢？？？" class="headerlink" title="看到这儿，到底如何去修改系统的代码块样式呢？？？"></a>看到这儿，到底如何去修改系统的代码块样式呢？？？</h2><p>1.前往文件夹<br> <code>~/Library/Developer/Xcode/UserData/CodeSnippets</code></p>
+<p> 2.创建 <strong>if.codesnippet</strong> 文件</p>
+<p>3.复制以下模板：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="meta-string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--code config here--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>4.找到系统的 if 代码块，粘贴 过来。</p>
+<p>5.修改 <strong>IDECodeSnippetVersion</strong> 从1变成2。</p>
+<p>6.增加 <strong>IDECodeSnippetUserSnippet</strong> 为 true。</p>
+<p>7.保存，关闭。退出Xcode ，再打开，输入 if ,看看此时的 if 样式，大功告成！！！！</p>
+<p>最后修改的 if 配置文件应是如下：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="meta-string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetVersion<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">integer</span>&gt;</span>2<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetUserSnippet<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetCompletionPrefix<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>if<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetContents<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>if (<span class="symbol">&amp;lt;</span>#condition#<span class="symbol">&amp;gt;</span>) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="symbol">&amp;lt;</span>#statements#<span class="symbol">&amp;gt;</span></span><br><span class="line">&#125;<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetIdentifier<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>D70E6D11-0297-4BAB-88AA-86D5D5CBBC5D<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetLanguage<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>Xcode.SourceCodeLanguage.C<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetSummary<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>Execute code only when a certain condition is true.<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetTitle<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>If Statement<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>IDECodeSnippetCompletionScopes<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>CodeBlock<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>根据 if 的配置逻辑，完全可以再修改 if-else，switch，dispatch_once，dispatch_after等样式。</p>
+<p>以下是我修改的一些：</p>
+<p><img src="http://img.blog.csdn.net/20151026153629974" alt></p>
+<p> 这个CodeSnippets文件夹是可以复制给他人，别人安装在相同的目录下，便也有了相同的功能。很适合一个团队的代码规整。</p>
+]]></content>
+      <tags>
+        <tag>iOS technology</tag>
+      </tags>
+  </entry>
+</search>
