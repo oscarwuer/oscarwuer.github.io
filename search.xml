@@ -259,7 +259,7 @@
 
 
 
-<h4 id="1-删除链表节点"><a href="#1-删除链表节点" class="headerlink" title="1.删除链表节点"></a>1.删除链表节点</h4><p><strong>题目描述：</strong>给定链表的头指针和一个节点指针，在O(1)时间删除该节点。</p>
+<h4 id="1-删除链表节点"><a href="#1-删除链表节点" class="headerlink" title="1. 删除链表节点"></a>1. 删除链表节点</h4><p><strong>题目描述：</strong>给定链表的头指针和一个节点指针，在O(1)时间删除该节点。</p>
 <p><strong>分析：</strong>主要思想是用下一个节点数据覆盖要删除的节点，然后再删除下一个节点。但是如果要删除的节点是尾节点时，就行不通了。</p>
 <p>代码如下：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//O(1)时间删除链表节点，从无头单链表中删除节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteRandomNode</span><span class="params">(Node *cur)</span> </span>&#123;</span><br><span class="line">    assert(cur != <span class="literal">NULL</span>)</span><br><span class="line">    assert(cur-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">    Node *pNext = cur-&gt;next;</span><br><span class="line">    cur-&gt;data = pNext-&gt;data;</span><br><span class="line">    cur-&gt;next = pNext-&gt;next;</span><br><span class="line">    <span class="keyword">delete</span> pNext;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -330,6 +330,48 @@
 ]]></content>
       <tags>
         <tag>code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>InjectionIII</title>
+    <url>/2020/03/25/Injectionlll/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>随着项目越来越大，每次build的时间也是在变长。当只是修改一个UI上的小问题时，为了看到效果，需要再次build等待很长的时间，无疑是件很糟糕的事情。尤其对比flutter的热重载，这样的开发体验尤其难受。</p>
+<p><strong>InjectionIII</strong> 的出现，完美解决了这样的困境。修改完之后，只需要保存，即可看到修改完的效果。</p>
+<p>有一点很纳闷，这么好用的工具，为什么之前不但是我，身边的朋友也从来没有提及过，怪哉怪哉！</p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6tSfK.gif" alt="效果图"></p>
+<blockquote>
+<p>只支持模拟器！只支持模拟器！只支持模拟器！</p>
+</blockquote>
+<h4 id="一、下载"><a href="#一、下载" class="headerlink" title="一、下载"></a>一、下载</h4><p>在 <code>App Store</code>搜索 <strong>InjectionIII</strong> 并下载</p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6YHlF.png" alt="Injection下载"></p>
+<h4 id="二、打开工程"><a href="#二、打开工程" class="headerlink" title="二、打开工程"></a>二、打开工程</h4><p>下载完成后打开此软件，Mac状态点击 <strong>InjectionIII</strong> -&gt; <strong>Open Project</strong> ，选择你的工程文件夹然后确定 <strong>Select Project Directory</strong> 。操作完成后再用Xcode打开工程。</p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6YoWT.png" alt="工程选择"></p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6Y7SU.png" alt="具体选择"></p>
+<h4 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h4><p>Xcode 打开工程后，在 <code>AppDelegate</code> 的 <code>didFinishLaunchingWithOptions</code> 方法内注入 <strong>InjectionIII</strong></p>
+<p>Xcode版本大于等于10.2 如下注入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#if DEBUG</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;iOSInjection.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;for tvOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;tvOSInjection.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;Or for macOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;macOSInjection.bundle&quot;)?.load()</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<p>Xcode版本10.1的如下注入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#if DEBUG</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;iOSInjection10.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;for tvOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;tvOSInjection10.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;Or for macOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;macOSInjection10.bundle&quot;)?.load()</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，文件路径不能有错，如果你有什么骚操作下载的软件被你移动到其它文件夹，就要用你自己的路径。</p>
+</blockquote>
+<h4 id="四、看Xcode日志"><a href="#四、看Xcode日志" class="headerlink" title="四、看Xcode日志"></a>四、看Xcode日志</h4><p>配置完成后年，<strong>run</strong>你的项目，注意查看Xcode日志。如果有如下输出，则成功注入了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">? Injection connected, watching &#x2F;Users&#x2F;zhouqiang&#x2F;Desktop&#x2F;Project&#x2F;AnXinCollege&#x2F;**</span><br></pre></td></tr></table></figure>
+
+<p>比如我修改了 <code>SettingViewController</code> 文件，并保存（<strong>command + S</strong>），日志输出如下，代表成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">? *** Compiling &#x2F;Users&#x2F;zhouqiang&#x2F;Desktop&#x2F;Project&#x2F;AnXinCollege&#x2F;AnXinCollege&#x2F;Modules&#x2F;Mine&#x2F;Setting&#x2F;SettingViewController.swift ***</span><br><span class="line">? Loading .dylib ...</span><br><span class="line">objc[10121]: Class _TtC12AnXinCollege21SettingViewController is implemented in both &#x2F;Users&#x2F;zhouqiang&#x2F;Library&#x2F;Developer&#x2F;CoreSimulator&#x2F;Devices&#x2F;A12F878C-ACF9-4D62-A82E-4D260EE7E08A&#x2F;data&#x2F;Containers&#x2F;Bundle&#x2F;Application&#x2F;ABBB9C03-F6EE-4354-816E-9537D729FC8F&#x2F;AnXinCollege.app&#x2F;AnXinCollege (0x10709ed28) and &#x2F;Users&#x2F;zhouqiang&#x2F;Library&#x2F;Containers&#x2F;com.johnholdsworth.InjectionIII&#x2F;Data&#x2F;eval101.dylib (0x1266d5da0). One of the two will be used. Which one is undefined.</span><br><span class="line">? Loaded .dylib - Ignore any duplicate class warning ^</span><br><span class="line">? Injected &#39;SettingViewController&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><p>一定要保存，只需要保存，快捷键<strong>Command + S</strong> ，看到如上日志输出即可</p>
+<p>要想看到修改后的效果，<strong>一定要确保操作执行到你修改的代码</strong>。比如cell的改动，保存后，你需要滑动cell触发你修改的代码。比如页面UI的修改,修改完如果没有其它按钮能触发到,则需要返回上一页再进来,<strong>以此确保执行到你修改的代码</strong></p>
+<p><strong>不仅仅看UI上的变化，逻辑上的更改也是可以的</strong></p>
+<p><a href="https://github.com/johnno1962/InjectionIII" target="_blank" rel="noopener">参考链接</a></p>
+]]></content>
+      <tags>
+        <tag>Xcode</tag>
       </tags>
   </entry>
 </search>

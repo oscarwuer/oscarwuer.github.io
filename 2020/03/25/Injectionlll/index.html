@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="system," />
+  <meta name="keywords" content="Xcode," />
 
 
 
@@ -88,20 +88,22 @@
 
 
 
-<meta name="description" content="WHAT本篇主要是基于Nginx在Mac上搭建自己的服务器。 我相信很多朋友肯定是第一次听到Nginx，关于它具有怎样的传奇，这儿肯定说不完也说不透. 有兴趣的朋友可以自行google或者baidu.WHY为什么要搭建自己的服务器呢。  好处肯定多多，这儿说一条——模拟数据。  很多时候，我们在前端开发的过程中，API接口没有做好. 当我们要铺界面时，如果等待API的开发完成，无疑是件很耽误工作的">
+<meta name="description" content="前言随着项目越来越大，每次build的时间也是在变长。当只是修改一个UI上的小问题时，为了看到效果，需要再次build等待很长的时间，无疑是件很糟糕的事情。尤其对比flutter的热重载，这样的开发体验尤其难受。 InjectionIII 的出现，完美解决了这样的困境。修改完之后，只需要保存，即可看到修改完的效果。 有一点很纳闷，这么好用的工具，为什么之前不但是我，身边的朋友也从来没有提及过，怪哉">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac使用Nginx搭建本地服务器">
-<meta property="og:url" content="http://yoursite.com/2015/11/27/Mac%E4%BD%BF%E7%94%A8Nginx%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:title" content="InjectionIII">
+<meta property="og:url" content="http://yoursite.com/2020/03/25/Injectionlll/index.html">
 <meta property="og:site_name" content="长弓雪舞">
-<meta property="og:description" content="WHAT本篇主要是基于Nginx在Mac上搭建自己的服务器。 我相信很多朋友肯定是第一次听到Nginx，关于它具有怎样的传奇，这儿肯定说不完也说不透. 有兴趣的朋友可以自行google或者baidu.WHY为什么要搭建自己的服务器呢。  好处肯定多多，这儿说一条——模拟数据。  很多时候，我们在前端开发的过程中，API接口没有做好. 当我们要铺界面时，如果等待API的开发完成，无疑是件很耽误工作的">
-<meta property="og:image" content="https://s1.ax1x.com/2020/07/20/UhAKc6.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/07/20/UhAMjK.jpg">
-<meta property="article:published_time" content="2015-11-27T08:34:00.000Z">
-<meta property="article:modified_time" content="2020-07-20T03:52:59.122Z">
+<meta property="og:description" content="前言随着项目越来越大，每次build的时间也是在变长。当只是修改一个UI上的小问题时，为了看到效果，需要再次build等待很长的时间，无疑是件很糟糕的事情。尤其对比flutter的热重载，这样的开发体验尤其难受。 InjectionIII 的出现，完美解决了这样的困境。修改完之后，只需要保存，即可看到修改完的效果。 有一点很纳闷，这么好用的工具，为什么之前不但是我，身边的朋友也从来没有提及过，怪哉">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/25/d6tSfK.gif">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/25/d6YHlF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/25/d6YoWT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/25/d6Y7SU.png">
+<meta property="article:published_time" content="2020-03-25T02:21:06.000Z">
+<meta property="article:modified_time" content="2020-08-25T03:47:18.091Z">
 <meta property="article:author" content="长弓">
-<meta property="article:tag" content="system">
+<meta property="article:tag" content="Xcode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/07/20/UhAKc6.jpg">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/08/25/d6tSfK.gif">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/11/27/Mac使用Nginx搭建本地服务器/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/25/Injectionlll/"/>
 
 
 
 
 
-  <title>Mac使用Nginx搭建本地服务器 | 长弓雪舞</title>
+  <title>InjectionIII | 长弓雪舞</title>
   
 
 
@@ -259,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/27/Mac%E4%BD%BF%E7%94%A8Nginx%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/25/Injectionlll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="长弓">
@@ -276,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac使用Nginx搭建本地服务器</h1>
+          <h1 class="post-title" itemprop="name headline">InjectionIII</h1>
         
 
         <div class="post-meta">
@@ -288,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-27T16:34:00+08:00">
-                2015-11-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T10:21:06+08:00">
+                2020-03-25
               </time>
             
 
@@ -306,7 +308,7 @@
 
           
           
-             <span id="/2015/11/27/Mac%E4%BD%BF%E7%94%A8Nginx%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="leancloud_visitors" data-flag-title="Mac使用Nginx搭建本地服务器">
+             <span id="/2020/03/25/Injectionlll/" class="leancloud_visitors" data-flag-title="InjectionIII">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -338,73 +340,40 @@
       
 
       
-        <h4 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h4><pre><code>本篇主要是基于Nginx在Mac上搭建自己的服务器。
-我相信很多朋友肯定是第一次听到Nginx，关于它具有怎样的传奇，这儿肯定说不完也说不透.
-有兴趣的朋友可以自行google或者baidu.</code></pre><h4 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h4><pre><code>为什么要搭建自己的服务器呢。 
-好处肯定多多，这儿说一条——模拟数据。
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>随着项目越来越大，每次build的时间也是在变长。当只是修改一个UI上的小问题时，为了看到效果，需要再次build等待很长的时间，无疑是件很糟糕的事情。尤其对比flutter的热重载，这样的开发体验尤其难受。</p>
+<p><strong>InjectionIII</strong> 的出现，完美解决了这样的困境。修改完之后，只需要保存，即可看到修改完的效果。</p>
+<p>有一点很纳闷，这么好用的工具，为什么之前不但是我，身边的朋友也从来没有提及过，怪哉怪哉！</p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6tSfK.gif" alt="效果图"></p>
+<blockquote>
+<p>只支持模拟器！只支持模拟器！只支持模拟器！</p>
+</blockquote>
+<h4 id="一、下载"><a href="#一、下载" class="headerlink" title="一、下载"></a>一、下载</h4><p>在 <code>App Store</code>搜索 <strong>InjectionIII</strong> 并下载</p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6YHlF.png" alt="Injection下载"></p>
+<h4 id="二、打开工程"><a href="#二、打开工程" class="headerlink" title="二、打开工程"></a>二、打开工程</h4><p>下载完成后打开此软件，Mac状态点击 <strong>InjectionIII</strong> -&gt; <strong>Open Project</strong> ，选择你的工程文件夹然后确定 <strong>Select Project Directory</strong> 。操作完成后再用Xcode打开工程。</p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6YoWT.png" alt="工程选择"></p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6Y7SU.png" alt="具体选择"></p>
+<h4 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h4><p>Xcode 打开工程后，在 <code>AppDelegate</code> 的 <code>didFinishLaunchingWithOptions</code> 方法内注入 <strong>InjectionIII</strong></p>
+<p>Xcode版本大于等于10.2 如下注入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#if DEBUG</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;iOSInjection.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;for tvOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;tvOSInjection.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;Or for macOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;macOSInjection.bundle&quot;)?.load()</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
 
-很多时候，我们在前端开发的过程中，API接口没有做好.
-当我们要铺界面时，如果等待API的开发完成，无疑是件很耽误工作的事情。
-还有一点，即使API完成了，我们开发完项目时，需要自测各种极限的数据。例如</code></pre><ul>
-<li>约定好返回的是NSString,如果返回的是NSNumber，你会崩吗？</li>
-<li>约定好的一个字段有返回值，突然间返回为null，你会崩吗？</li>
-<li>约定好的label上的赋值文本是最多7个字，突然给你77个字，你会变得很丑吗？</li>
-</ul>
-<p> <strong>有人问了，不是约定好了吗？</strong><br> <strong>话说API也是人开发的，你写的客户端还会crash呢，就不允许人家后台出错啦？？？</strong><br> <strong>讲道理嘛大兄弟！</strong></p>
-<h4 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h4><pre><code>复杂来说，这是件很难的事情，因为无论是Nginx，还是它所需要的准备工作，都是一个个庞然大物。搞不懂！
+<p>Xcode版本10.1的如下注入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#if DEBUG</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;iOSInjection10.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;for tvOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;tvOSInjection10.bundle&quot;)?.load()</span><br><span class="line">&#x2F;&#x2F;Or for macOS:</span><br><span class="line">Bundle(path: &quot;&#x2F;Applications&#x2F;InjectionIII.app&#x2F;Contents&#x2F;Resources&#x2F;macOSInjection10.bundle&quot;)?.load()</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
 
-你需要安装Nginx,你可以自己独立装,也可以用别的包安装. 
-后者那推荐的是Homebrew.这也是下面我带大家一起来做的。 
-如果是前者，不要问我，我装了一下午，然后失败了。
+<blockquote>
+<p>注意，文件路径不能有错，如果你有什么骚操作下载的软件被你移动到其它文件夹，就要用你自己的路径。</p>
+</blockquote>
+<h4 id="四、看Xcode日志"><a href="#四、看Xcode日志" class="headerlink" title="四、看Xcode日志"></a>四、看Xcode日志</h4><p>配置完成后年，<strong>run</strong>你的项目，注意查看Xcode日志。如果有如下输出，则成功注入了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Injection connected, watching &#x2F;Users&#x2F;zhouqiang&#x2F;Desktop&#x2F;Project&#x2F;AnXinCollege&#x2F;**</span><br></pre></td></tr></table></figure>
 
-简单来说，跟着我来做，几个步骤，几分钟，带你实现。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">平台：Mac</span><br><span class="line">系统：10.11.1</span><br></pre></td></tr></table></figure>
+<p>比如我修改了 <code>SettingViewController</code> 文件，并保存（<strong>command + S</strong>），日志输出如下，代表成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">? *** Compiling &#x2F;Users&#x2F;zhouqiang&#x2F;Desktop&#x2F;Project&#x2F;AnXinCollege&#x2F;AnXinCollege&#x2F;Modules&#x2F;Mine&#x2F;Setting&#x2F;SettingViewController.swift ***</span><br><span class="line">? Loading .dylib ...</span><br><span class="line">objc[10121]: Class _TtC12AnXinCollege21SettingViewController is implemented in both &#x2F;Users&#x2F;zhouqiang&#x2F;Library&#x2F;Developer&#x2F;CoreSimulator&#x2F;Devices&#x2F;A12F878C-ACF9-4D62-A82E-4D260EE7E08A&#x2F;data&#x2F;Containers&#x2F;Bundle&#x2F;Application&#x2F;ABBB9C03-F6EE-4354-816E-9537D729FC8F&#x2F;AnXinCollege.app&#x2F;AnXinCollege (0x10709ed28) and &#x2F;Users&#x2F;zhouqiang&#x2F;Library&#x2F;Containers&#x2F;com.johnholdsworth.InjectionIII&#x2F;Data&#x2F;eval101.dylib (0x1266d5da0). One of the two will be used. Which one is undefined.</span><br><span class="line">? Loaded .dylib - Ignore any duplicate class warning ^</span><br><span class="line">? Injected &#39;SettingViewController&#39;</span><br></pre></td></tr></table></figure>
 
-<p> <strong>1.  安装Homebrew</strong></p>
-<p> <strong>2. 安装Nginx</strong>  </p>
-<p> <strong>3. 启动Nginx</strong> </p>
-<p> <strong>4. 配置JSON文件</strong>  </p>
-<p> <strong>5. 配置Nginx</strong> </p>
-<p> <strong>6. 展现成果</strong></p>
-<hr>
-<p><strong>1.安装Homebrew</strong></p>
-<p>打开终端，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;install)&quot;</span><br></pre></td></tr></table></figure>
 
-<p>跟着步骤走。终端都有提示。</p>
-<p><strong>2.依赖Homebrew安装Nginx</strong></p>
-<p>依旧在终端中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
 
-<p>这个等待时间会比较长。如果你仔细看了终端的进程。你会发现你用homebrew安装是多么聪明了。其实在安装nginx之前还要帮你安装很多别的，如果你独立安装，是很费劲的。。。</p>
-<p><strong>3.启动Nginx</strong></p>
-<p>依旧在终端里，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
-
-<p>回车就行了。别惊讶，就这么简单。<br>怎样验证Nginx能用了呢。你在浏览器里输入<code>localhost:8080</code>，回车，出现以下画面，说明成功。<br><img src="https://s1.ax1x.com/2020/07/20/UhAKc6.jpg" alt="oscar"></p>
-<p>如果是以下画面，转身抬头挺胸三鞠躬，再回来看看那里出错了。<br><img src="https://s1.ax1x.com/2020/07/20/UhAMjK.jpg" alt="这里写图片描述"></p>
-<p><strong>4.配置JSON文件</strong></p>
-<p>那配置文件是在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;nginx&#x2F;1.8.0&#x2F;html&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>这个目录下会默认有50x.html和index.html两个文件。你再新加一个json文件，取个名字叫<strong>oscar.json</strong>，里面随便写些字典数组，保存。</p>
-<p><strong>5.配置Nginx</strong></p>
-<p>安装完之后，默认路径是在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;etc&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>这个文件下会有一个nginx文件夹和一个openssl的文件夹。<br>点开nginx文件夹，里面会有个</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx.conf.default</span><br></pre></td></tr></table></figure>
-
-<p>的文件，记住，不要看错了，这里面的名字很相像。用文本编辑器打开，里面默认是有内容的，可以看看。将以下内容粘贴进去。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;        </span><br><span class="line">	listen       8080;    </span><br><span class="line">	server_name  localhost;         </span><br><span class="line">	#access_log  logs&#x2F;host.access.log  main; </span><br><span class="line">	location ~* &#123;             </span><br><span class="line">		add_header Content-Type &quot;application&#x2F;json&quot;;</span><br><span class="line">		root   html;             </span><br><span class="line">		if (!-f $request_filename) &#123;                 </span><br><span class="line">			rewrite ^&#x2F;(.*)  &#x2F;$1.json last;</span><br><span class="line">		&#125;             </span><br><span class="line">	index  index.php index.html index.htm;</span><br><span class="line">	&#125;         </span><br><span class="line">error_page 405 &#x3D;200 http:&#x2F;&#x2F;$host$request_uri;     &#125;</span><br></pre></td></tr></table></figure>
-
-<p>6.展现成果<br>    如果你新加的json文件叫oscar.json，目录是在刚刚说的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;nginx&#x2F;1.8.0&#x2F;html&#x2F;oscar.json</span><br></pre></td></tr></table></figure>
-
-<p>那么你在浏览器里输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8080&#x2F;oscar.json</span><br></pre></td></tr></table></figure>
-
-<p>看看你的成果吧！</p>
-<p>如果你的页面有你配置的JSON文件，那么恭喜你。别人如果想访问你的资源，保证你两在同一个局域网内，然后把你的ip地址替换localhost，再看看你朋友的电脑的页面吧。</p>
+<h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><p>一定要保存，只需要保存，快捷键<strong>Command + S</strong> ，看到如上日志输出即可</p>
+<p>要想看到修改后的效果，<strong>一定要确保操作执行到你修改的代码</strong>。比如cell的改动，保存后，你需要滑动cell触发你修改的代码。比如页面UI的修改,修改完如果没有其它按钮能触发到,则需要返回上一页再进来,<strong>以此确保执行到你修改的代码</strong></p>
+<p><strong>不仅仅看UI上的变化，逻辑上的更改也是可以的</strong></p>
+<p><a href="https://github.com/johnno1962/InjectionIII" target="_blank" rel="noopener">参考链接</a></p>
 
       
     </div>
@@ -422,7 +391,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/system/" rel="tag"><i class="fa fa-tag"></i> system</a>
+            <a href="/tags/Xcode/" rel="tag"><i class="fa fa-tag"></i> Xcode</a>
           
         </div>
       
@@ -435,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/26/Snippet/" rel="next" title="Snippet">
-                <i class="fa fa-chevron-left"></i> Snippet
+              <a href="/2019/07/29/%E9%93%BE%E8%A1%A8%E9%9B%86%E9%94%A6/" rel="next" title="链表集锦">
+                <i class="fa fa-chevron-left"></i> 链表集锦
               </a>
             
           </div>
@@ -445,8 +414,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/09/ScrollView%E5%B5%8C%E5%A5%97scrollView%EF%BC%8C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%81%94%E5%8A%A8%E9%97%AE%E9%A2%98/" rel="prev" title="ScrollView嵌套scrollView，如何解决联动问题">
-                ScrollView嵌套scrollView，如何解决联动问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/14/universal_links/" rel="prev" title="Universal Links">
+                Universal Links <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -591,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#WHAT"><span class="nav-text">WHAT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHY"><span class="nav-text">WHY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HOW"><span class="nav-text">HOW</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一、下载"><span class="nav-text">一、下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、打开工程"><span class="nav-text">二、打开工程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、配置"><span class="nav-text">三、配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、看Xcode日志"><span class="nav-text">四、看Xcode日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tips"><span class="nav-text">Tips</span></a></li></ol></div>
             
 
           </div>

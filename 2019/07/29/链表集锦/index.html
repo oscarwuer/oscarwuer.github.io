@@ -88,14 +88,14 @@
 
 
 
-<meta name="description" content="关于链表节点的定义： 1234struct Node &amp;#123;    int data;    Node *next;&amp;#125;    1.删除链表节点题目描述：给定链表的头指针和一个节点指针，在O(1)时间删除该节点。 分析：主要思想是用下一个节点数据覆盖要删除的节点，然后再删除下一个节点。但是如果要删除的节点是尾节点时，就行不通了。 代码如下： 123456789&#x2F;&#x2F;O(1)时间删除链表">
+<meta name="description" content="关于链表节点的定义： 1234struct Node &amp;#123;    int data;    Node *next;&amp;#125;    1. 删除链表节点题目描述：给定链表的头指针和一个节点指针，在O(1)时间删除该节点。 分析：主要思想是用下一个节点数据覆盖要删除的节点，然后再删除下一个节点。但是如果要删除的节点是尾节点时，就行不通了。 代码如下： 123456789&#x2F;&#x2F;O(1)时间删除链">
 <meta property="og:type" content="article">
 <meta property="og:title" content="链表集锦">
 <meta property="og:url" content="http://yoursite.com/2019/07/29/%E9%93%BE%E8%A1%A8%E9%9B%86%E9%94%A6/index.html">
 <meta property="og:site_name" content="长弓雪舞">
-<meta property="og:description" content="关于链表节点的定义： 1234struct Node &amp;#123;    int data;    Node *next;&amp;#125;    1.删除链表节点题目描述：给定链表的头指针和一个节点指针，在O(1)时间删除该节点。 分析：主要思想是用下一个节点数据覆盖要删除的节点，然后再删除下一个节点。但是如果要删除的节点是尾节点时，就行不通了。 代码如下： 123456789&#x2F;&#x2F;O(1)时间删除链表">
+<meta property="og:description" content="关于链表节点的定义： 1234struct Node &amp;#123;    int data;    Node *next;&amp;#125;    1. 删除链表节点题目描述：给定链表的头指针和一个节点指针，在O(1)时间删除该节点。 分析：主要思想是用下一个节点数据覆盖要删除的节点，然后再删除下一个节点。但是如果要删除的节点是尾节点时，就行不通了。 代码如下： 123456789&#x2F;&#x2F;O(1)时间删除链">
 <meta property="article:published_time" content="2019-07-29T03:46:09.000Z">
-<meta property="article:modified_time" content="2020-07-29T07:15:21.352Z">
+<meta property="article:modified_time" content="2020-07-30T02:39:07.727Z">
 <meta property="article:author" content="长弓">
 <meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary">
@@ -340,7 +340,7 @@
 
 
 
-<h4 id="1-删除链表节点"><a href="#1-删除链表节点" class="headerlink" title="1.删除链表节点"></a>1.删除链表节点</h4><p><strong>题目描述：</strong>给定链表的头指针和一个节点指针，在O(1)时间删除该节点。</p>
+<h4 id="1-删除链表节点"><a href="#1-删除链表节点" class="headerlink" title="1. 删除链表节点"></a>1. 删除链表节点</h4><p><strong>题目描述：</strong>给定链表的头指针和一个节点指针，在O(1)时间删除该节点。</p>
 <p><strong>分析：</strong>主要思想是用下一个节点数据覆盖要删除的节点，然后再删除下一个节点。但是如果要删除的节点是尾节点时，就行不通了。</p>
 <p>代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//O(1)时间删除链表节点，从无头单链表中删除节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteRandomNode</span><span class="params">(Node *cur)</span> </span>&#123;</span><br><span class="line">    assert(cur != <span class="literal">NULL</span>)</span><br><span class="line">    assert(cur-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">    Node *pNext = cur-&gt;next;</span><br><span class="line">    cur-&gt;data = pNext-&gt;data;</span><br><span class="line">    cur-&gt;next = pNext-&gt;next;</span><br><span class="line">    <span class="keyword">delete</span> pNext;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -448,8 +448,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/14/universal_links/" rel="prev" title="Universal Links">
-                Universal Links <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/25/Injectionlll/" rel="prev" title="InjectionIII">
+                InjectionIII <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -531,7 +531,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -544,7 +544,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -594,7 +594,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-删除链表节点"><span class="nav-text">1.删除链表节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-单链表反转"><span class="nav-text">2. 单链表反转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-求链表倒数第k个节点"><span class="nav-text">3. 求链表倒数第k个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-求链表的中间节点"><span class="nav-text">4. 求链表的中间节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-判断单链表是否存在环"><span class="nav-text">5. 判断单链表是否存在环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-找到环的入口点"><span class="nav-text">6. 找到环的入口点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-判断两个链表是否相交"><span class="nav-text">7. 判断两个链表是否相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-链表🈶环，如何判断相交"><span class="nav-text">8. 链表🈶环，如何判断相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-两链表相交的第一个公共节点"><span class="nav-text">9. 两链表相交的第一个公共节点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-删除链表节点"><span class="nav-text">1. 删除链表节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-单链表反转"><span class="nav-text">2. 单链表反转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-求链表倒数第k个节点"><span class="nav-text">3. 求链表倒数第k个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-求链表的中间节点"><span class="nav-text">4. 求链表的中间节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-判断单链表是否存在环"><span class="nav-text">5. 判断单链表是否存在环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-找到环的入口点"><span class="nav-text">6. 找到环的入口点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-判断两个链表是否相交"><span class="nav-text">7. 判断两个链表是否相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-链表🈶环，如何判断相交"><span class="nav-text">8. 链表🈶环，如何判断相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-两链表相交的第一个公共节点"><span class="nav-text">9. 两链表相交的第一个公共节点</span></a></li></ol></div>
             
 
           </div>
